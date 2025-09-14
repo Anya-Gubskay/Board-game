@@ -198,7 +198,7 @@
     { name: "Персонажи из кино и литературы", xPercent: 76.1, yPercent: 82.5, widthPercent: 8.73, heightPercent: 4.5 },
     { name: "Метафорические образы", xPercent: 84, yPercent: 79.13, widthPercent: 8.67, heightPercent: 4.75 },
     { name: "Цитаты известных людей", xPercent: 85, yPercent: 72.6, widthPercent: 6.5, heightPercent: 4.62 },
-    { name: "Дорожные знаки", xPercent: 75, yPercent: 40, widthPercent: 12, heightPercent: 6 },
+    { name: "Дорожные знаки", xPercent: 80, yPercent: 68, widthPercent: 6.5, heightPercent: 4.62 },
     { name: "Цитаты из книг", xPercent: 86.3, yPercent: 64, widthPercent: 6.9, heightPercent: 4.4 },
     { name: "Строки из песен", xPercent: 77, yPercent: 60.9, widthPercent: 6.2, heightPercent: 4.9 },
     { name: "Устами младенца", xPercent: 85.8, yPercent: 56.4, widthPercent: 6.2, heightPercent: 4.4 },
@@ -378,7 +378,7 @@ const yPercent = ((event.offsetY / gameBoard.height) * 100).toFixed(2);
             let boardRect = gameBoard.getBoundingClientRect();
             let xPercent = ((x - boardRect.left) / boardRect.width) * 100;
             let yPercent = ((y - boardRect.top) / boardRect.height) * 100;
-
+            console.log(xPercent, yPercent)
             return cells.find(cell =>
                 xPercent >= cell.xPercent && xPercent <= cell.xPercent + cell.widthPercent &&
                 yPercent >= cell.yPercent && yPercent <= cell.yPercent + cell.heightPercent

@@ -73,18 +73,6 @@ app.get("/check-room", (req, res) => {
     return res.status(404).json({ error: "Комната не найдена" });
   }
 
-  // Проверяем, прошло ли 8 часов с момента создания
-  const room = rooms[roomId];
-  const now = Date.now();
-  const expirationTime = 8 * 60 * 60 * 1000; // 8 часов в миллисекундах
-
-  if (now - room.createdAt > expirationTime) {
-    console.log(`⏳ Время жизни комнаты ${roomId} истекло. Удаляем... ${room.createdAt} ${expirationTime}`);
-    delete rooms[roomId];
-    saveRoomsToFile();
-    return res.status(404).json({ error: "Комната не найдена" });
-  }
-
   return res.json({ exists: true });
 });
 
@@ -95,8 +83,7 @@ app.post("/create-room", (req, res) => {
   }
 
   const roomId = uuidv4();
-  const createdAt = Date.now(); // Время создания в миллисекундах
-  rooms[roomId] = { players: [], createdAt};
+  rooms[roomId] = { players: []};
 
   saveRoomsToFile();
 
